@@ -4,33 +4,37 @@
 
 body {
   margin: 0px;
-  color: #4F26E1;
+  color: #4f26e1;
 }
 
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 h1,
-h2, 
+h2,
 h4,
 h5,
 h6 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.0rem;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2rem;
 }
 
 *::selection {
-  background-color: #4F26E1;
-  color:#ffffff;
+  background-color: #4f26e1;
+  color: #ffffff;
 }
 /****************Specific Stylings ***********/
-
 
 .header {
   padding: 48px 16px;
   text-align: center;
   background-color: rgb(255, 255, 255);
+  box-shadow: 9px 13px 16px rgb(239, 239, 239);
+}
+
+.profession::after {
+  content: "  🎉";
 }
 
 h1 {
@@ -39,15 +43,14 @@ h1 {
 }
 
 h3 {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
-
 .nav-link {
-  color:#4F26E1;
+  color: #4f26e1;
   padding: 10px 20px;
   text-decoration: none;
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: 1.3rem;
 }
 .nav-link:visited {
@@ -55,7 +58,7 @@ h3 {
 }
 
 .nav-link:hover {
-  color:#ffea00;
+  color: #ffea00;
 }
 
 .nav-link:active {
@@ -63,26 +66,31 @@ h3 {
 }
 
 .nav-link + .nav-link {
-  margin-left:16px;
+  margin-left: 16px;
 }
 
 .main {
   max-width: 800px;
-  margin: 0 auto;‚
+  margin: 0 auto;
   padding: 16px;
 }
 
-.main > * + * { 
+.main > * + * {
   margin-top: 48px;
 }
 
 .main > * {
-  border-top: 1px solid #4F26E1;
-}
-.main > *:first-child {
-  border-top:none;
-}
-.profession::after {
-  content: "  🎉";
+  border-top: 1px solid #4f26e1;
 }
 
+.main > *:first-child {
+  border-top: none;
+}
+
+.experience-heading {
+  display: inline-block;
+}
+
+.experience-subheading {
+  display: inline-block;
+}
