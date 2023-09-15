@@ -19,25 +19,6 @@ html {
   }
 }
 
-body {
-  --main-color: rgb(79, 38, 225);
-  --primary-color: rgb(255, 255, 255);
-  --shadow-color: rgb(239, 239, 239);
-  --accent-color: rgb(255, 234, 0);
-  --badge-shadow: rgb(254, 244, 124);
-  --page-background-color: rgb(255, 255, 255);
-  --page-text-color: rgb(79, 38, 225);
-  color: var(--main-color);
-  margin: 0;
-}
-
-@media screen and (prefers-color-scheme: dark) {
-  body {
-    --page-background-color: rgb(79, 38, 225);
-    --page-text-color: rgb(255, 255, 255);
-  }
-}
-
 h1,
 h2,
 h4,
@@ -56,18 +37,38 @@ h3 {
   font-family: "Roboto", sans-serif;
 }
 
-/*   *::selection --> Schriftauswahl farbig / interessanter */
+/* ----------------Start Body Custom Properties-----------------*/
+body {
+  --main-color: rgb(79, 38, 225);
+  --primary-color: rgb(255, 255, 255);
+  --shadow-color: rgb(239, 239, 239);
+  --accent-color: rgb(255, 234, 0);
+  --badge-shadow: rgb(254, 244, 124);
+  --page-background-color: rgb(255, 255, 255);
+  --page-text-color: rgb(79, 38, 225);
+
+  color: var(--main-color);
+  margin: 0;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  body {
+    --page-background-color: rgb(79, 38, 225);
+    --page-text-color: rgb(255, 255, 255);
+  }
+}
+
+/*   *::selection --> Text mit Maus auswählen --> Schriftauswahl farbig / interessanter */
 *::selection {
   background-color: var(--main-color);
   color: var(--primary-color);
 }
-/****************Specific Stylings ***********/
+
+/****************Specific Stylings Header ***********/
 
 .header {
   padding: 3rem 1rem;
-  _padding-top: 4.5rem;
   text-align: center;
-  _background-color: var(--primary-color);
   background-image: linear-gradient(
     235deg,
     var(--primary-color),
@@ -81,10 +82,6 @@ h3 {
   font-size: 4rem;
 }
 
-.main-heading {
-  font-size: 1em;
-}
-
 .profession {
   font-size: 0.25em;
 }
@@ -93,16 +90,26 @@ h3 {
   content: "  🎉";
 }
 
+/* ----------------Start Header Badge -----------------*/
 .header-badge {
   position: absolute;
-  right: 1.1rem;
-  top: 1.1rem;
+  right: 2.5rem;
+  top: 2.5rem;
   _aspect-ratio: 1; /* wird nicht blau weil relativ neu */
   border-radius: 100%;
+  opacity: 0.5;
   background-color: var(--accent-color);
   font-style: oblique;
-  padding: 1.5rem;
+  padding: 1rem;
   box-shadow: 0.5rem 0.8rem 1rem var(--badge-shadow);
+  transform-origin: top right;
+  transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
+}
+
+.header:hover .header-badge,
+.header:focus-within .header-badge {
+  opacity: 1;
+  transform: scale(1.5);
 }
 
 @media screen and (min-width: 992px) {
@@ -115,6 +122,10 @@ h3 {
   .header-badge {
     display: none;
   }
+
+  /* ----------------Ende Header Badge -----------------*/
+
+  /* ----------------Start Navigation-----------------*/
 
   .navigation {
     display: none;
@@ -140,22 +151,40 @@ h3 {
   text-decoration: none;
   font-family: "Bebas Neue", sans-serif;
   font-size: 1.3rem;
+  border-radius: 100%;
+  transition: background-color 0.25s ease-in-out;
+}
+
+.nav-link:hover {
+  background-color: var(--main-color);
+  color: var(--primary-color);
+}
+
+.nav-link:active {
+  text-decoration: line-through;
+  background-color: var(--main-color);
+  color: var(--primary-color);
 }
 
 .nav-link:visited {
   text-decoration: line-through;
 }
 
-.nav-link:hover {
-  color: var(--accent-color);
-}
-
-.nav-link:active {
-  text-decoration: line-through;
+.nav-link:focus {
+  background-color: var(--main-color);
+  outline-color: var(--primary-color);
+  outline-style: dotted;
 }
 
 .nav-link + .nav-link {
   margin-left: 1rem;
+}
+/* ----------------Ende Navigation -----------------*/
+
+/* ----------------Start Main Bereich -----------------*/
+
+.main-heading {
+  font-size: 1em;
 }
 
 .main {
@@ -164,13 +193,37 @@ h3 {
   padding: 1rem;
 }
 
+/*  */
+.main-article {
+  border-top: 0.125rem solid var(--accent-color);
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  padding: 0 1rem;
+}
+
+@media screen and (min-width: 768) {
+  .main-article {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+  }
+
+  .main-article-content {
+    margin-top: 4rem;
+  }
+}
+
+.main-article-heading {
+  position: relative;
+  left: -1.3rem;
+}
+
 .main > * + * {
   margin-top: 3rem;
 }
 
 @media screen and (min-width: 768) {
   .main > * + * {
-    margin-top: 5rem;
+    margin-top: 8rem;
   }
 }
 
@@ -183,18 +236,13 @@ h3 {
   border-top: none;
 }
 
-.article-heading {
-  position: relative;
-  left: -1.3rem;
-}
+/* ----------------Ende Main Bereich -----------------*/
+
+/* ----------------Start Header Experience Header, Heading, Subheading -----------------*/
 
 .experience-header {
   display: flex;
   flex-direction: column;
-}
-
-.experience-heading {
-  display: inline-block;
 }
 
 @media screen and (min-width: 768px) {
@@ -205,10 +253,6 @@ h3 {
     align-items: baseline;
     justify-content: space-between;
   }
-}
-
-.experience-subheading {
-  display: inline-block;
 }
 
 .contact-link {
@@ -232,6 +276,6 @@ h3 {
 
 .copyright {
   text-align: left;
-  _margin-top: 3rem;
+  margin-top: 3rem;
   font-size: smaller;
 }
